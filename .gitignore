@@ -1,0 +1,11 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore backup and test files
+db_connect_old.py
+test_connection_demo.py
+test_import.py
