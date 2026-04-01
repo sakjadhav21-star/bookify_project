@@ -7,7 +7,7 @@ try:
         host="localhost",
         database="bookify",
         user="postgres",
-        password="sakshi",
+        password=input("Enter DB password: "),
         port="5432"
     )
 
