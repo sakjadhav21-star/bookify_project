@@ -1,27 +1,21 @@
-import psycopg2
+from db_connect import get_connection
 
-db_password = input("Enter DB password: ")
-
-conn = psycopg2.connect(
-    host="localhost",
-    database="bookify",
-    user="postgres",
-    password=db_password,
-    port="5432"
-)
-
+conn = get_connection()
 cur = conn.cursor()
 
 print("---- SIGN UP ----")
 name = input("Enter name: ")
 email = input("Enter email: ")
 password = input("Enter password: ")
-age = int(input("Enter age: "))
+age = input("Enter age: ")
 
-cur.execute("INSERT INTO user_table (name, email, password, age) VALUES (%s, %s, %s, %s)",
-            (name, email, password, age))
+cur.execute(
+    "INSERT INTO user_table (name, email, password, age) VALUES (%s, %s, %s, %s)",
+    (name, email, password, age)
+)
 
 conn.commit()
 print("Signup successful!")
 
+cur.close()
 conn.close()

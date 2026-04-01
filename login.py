@@ -1,27 +1,24 @@
-import psycopg2
+from db_connect import get_connection
 
-db_password = input("Enter DB password: ")
-
-conn = psycopg2.connect(
-    host="localhost",
-    database="bookify",
-    user="postgres",
-    password=db_password,
-    port="5432"
-)
-
+conn = get_connection()
 cur = conn.cursor()
 
 print("---- LOGIN ----")
 email = input("Enter email: ")
 password = input("Enter password: ")
 
-cur.execute("SELECT * FROM user_table WHERE email=%s AND password=%s", (email, password))
+cur.execute(
+    "SELECT * FROM user_table WHERE email=%s AND password=%s",
+    (email, password)
+)
+
 user = cur.fetchone()
 
 if user:
     print("Login successful!")
+    print("Your User ID is:", user[0])
 else:
-    print("Invalid email or password")
+    print("Invalid login!")
 
+cur.close()
 conn.close()
