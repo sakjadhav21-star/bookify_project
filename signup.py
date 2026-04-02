@@ -6,7 +6,6 @@ cur = conn.cursor()
 print("---- SIGN UP ----")
 name = input("Enter name: ")
 email = input("Enter email: ")
-password = input("Enter password: ")
 age = input("Enter age: ")
 
 cur.execute(
