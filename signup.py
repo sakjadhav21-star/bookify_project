@@ -9,8 +9,8 @@ email = input("Enter email: ")
 age = input("Enter age: ")
 
 cur.execute(
-    "INSERT INTO user_table (name, email, password, age) VALUES (%s, %s, %s, %s)",
-    (name, email, password, age)
+    "INSERT INTO user_table (name, email, age) VALUES (%s, %s, %s)",
+    (name, email, age)
 )
 
 conn.commit()
