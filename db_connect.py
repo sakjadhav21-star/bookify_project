@@ -5,6 +5,6 @@ def get_connection():
         host="localhost",
         database="bookify",
         user="postgres",
-        password=input("Enter DB password: ")
+        password="sakshi"
     )
     return conn
